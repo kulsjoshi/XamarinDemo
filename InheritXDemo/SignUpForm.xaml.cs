@@ -41,9 +41,8 @@ namespace InheritXDemo
 		async private void openActionDialog(int intResult)
 		{
 			if (intResult == 1){
-				var result = await DisplayAlert(Constant.APP_NAME , Constant.SIGNUP_SUCCESS , null,Constant.OK);
-
-					 App.Instance.ClearNavigationAndGoToPage(new HomeForm());
+				await DisplayAlert(Constant.APP_NAME , Constant.SIGNUP_SUCCESS , null,Constant.OK);
+				App.Instance.ClearNavigationAndGoToPage(new NavigationDrawerDetailForm());
 
 			}
 			else{

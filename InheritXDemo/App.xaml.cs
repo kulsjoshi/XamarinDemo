@@ -33,6 +33,7 @@ namespace InheritXDemo
 		public void ClearNavigationAndGoToPage(ContentPage page)
 		{
 			MainPage = new NavigationPage(page);
+
 		}
 
 		public static PersonDatabase Database

@@ -47,12 +47,10 @@ namespace InheritXDemo
 
 			if (isDataValidate())
 			{
-				//We have one method in App class which clear all the activity stack
-				//
+				
+				performAction(App.Database.isUserAuthenticated(strMobileNumber, strPassword));
 
-				performAction(App.Database.isUserAuthenticated(strMobileNumber,strPassword));
 
-				//await Navigation.PushAsync(new HomeForm());
 			}
 		}
 
@@ -60,15 +58,14 @@ namespace InheritXDemo
 		{
 			if (result)
 			{
-				var answer = await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_SUCCESS, null, "OK");
-				if (answer == true)
-				{
-					App.Instance.ClearNavigationAndGoToPage(new HomeForm());
-				}
+				await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_SUCCESS, null, "OK");
+				App.Instance.ClearNavigationAndGoToPage(new HomeForm());
+
+
 			}
 			else
 			{
-				var answer = await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_FAILURE, null, "OK");
+				await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_FAILURE, null, "OK");
 			}
 		}
 
