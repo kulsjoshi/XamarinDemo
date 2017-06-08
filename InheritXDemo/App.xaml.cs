@@ -12,7 +12,7 @@ namespace InheritXDemo
 		{
 			InitializeComponent();
 			Instance = this;
-			MainPage = new NavigationPage(new LoginForm());
+			MainPage = new NavigationPage(new NavigationDrawerDetailForm());
 		}
 
 		protected override void OnStart()

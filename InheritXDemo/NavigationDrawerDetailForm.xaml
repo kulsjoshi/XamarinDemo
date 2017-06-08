@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MasterDetailPage 
-	xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="InheritXDemo.NavigationDrawerDetailForm" 
-	xmlns:local="clr-namespace:InheritXDemo;Assembly=InheritXDemo">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InheritXDemo.NavigationDrawerDetailForm" xmlns:local="clr-namespace:InheritXDemo;Assembly=InheritXDemo"
+	MasterBehavior="Popover">
 	<MasterDetailPage.Master>
-		<ContentPage Title="Navigation Drawer">
-			<StackLayout Orientation="Vertical" BackgroundColor="Olive">
-				<Label x:Name="navHome" Text="Home" TextColor="white" />
-				<Label x:Name="navChangePassword" Text="Change Password" TextColor="white"  />
-				<Label x:Name="navAboutUs" Text="About us" TextColor="white" />
-				<Label x:Name="navLogout" Text="Logout" TextColor="white" />
-			</StackLayout>
+		<ContentPage Title="Navigation Drawer" >
+			<ContentPage.Content>
+				<StackLayout Orientation="Vertical" >
+					<Image Source="logo.png" />
+					<Button Text="Home" Clicked="openHome" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="Change Password" Clicked="openChangePassword" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="About us" Clicked="openAboutUs" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="Logout" Clicked="openLogout" HorizontalOptions="CenterAndExpand"/>
+				</StackLayout>
+			</ContentPage.Content>
 		</ContentPage>
 	</MasterDetailPage.Master>
-	
 	<MasterDetailPage.Detail>
-		<local:HomeForm />
+		<ContentPage>
+			<ContentPage.Content>
+				<StackLayout Orientation="Vertical" BackgroundColor="Olive">
+					<Label Text="This is home page" />
+				</StackLayout>
+			</ContentPage.Content>
+		</ContentPage>
 	</MasterDetailPage.Detail>
-	
 </MasterDetailPage>

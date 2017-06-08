@@ -14,7 +14,7 @@ namespace InheritXDemo
 			InitializeComponent();
 		}
 
-		async void SignupClick(object sender, System.EventArgs e)
+		 void SignupClick(object sender, System.EventArgs e)
 		{
 
 			strName = entryName.Text;
@@ -42,7 +42,7 @@ namespace InheritXDemo
 		{
 			if (intResult == 1){
 				await DisplayAlert(Constant.APP_NAME , Constant.SIGNUP_SUCCESS , null,Constant.OK);
-				App.Instance.ClearNavigationAndGoToPage(new NavigationDrawerDetailForm());
+				App.Instance.ClearNavigationAndGoToPage(new HomeForm());
 
 			}
 			else{
@@ -88,6 +88,13 @@ namespace InheritXDemo
 				DisplayAlert(Constant.APP_NAME, Constant.ENTER_VALID_PASSWORD, Constant.OK);
 				return false;
 			}
+			else if (strPassword.ToLower().Equals(strConfirmPassword.ToLower()))
+			{
+				DisplayAlert(Constant.APP_NAME, Constant.PASSWORD_NOT_MATCH, Constant.OK);
+				return false;
+			}
+
+			
 
 			return true;
 		}

@@ -24,6 +24,9 @@ namespace InheritXDemo
 		public static String ENTER_PASSWORD = "Please enter password";
 		public static String ENTER_CONFIRM_PASSWORD = "Please enter confirm password";
 		public static String ENTER_VALID_PASSWORD = "Password should contain atlease 6 characters";
+		public static String PASSWORD_NOT_MATCH
+				 = "Password and confirm password does not match";
+
 		public static String INCORRECT_LOGIN_CREDENTIAL = "E-mail address or password is incorrect";
 
 

@@ -36,7 +36,7 @@ namespace InheritXDemo
 
 		async void SignUp_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new SignUpForm());
+			await Navigation.PushModalAsync(new SignUpForm());
 		}
 
 		void Login_Clicked(object sender, System.EventArgs e)
@@ -59,7 +59,9 @@ namespace InheritXDemo
 			if (result)
 			{
 				await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_SUCCESS, null, "OK");
-				App.Instance.ClearNavigationAndGoToPage(new HomeForm());
+				SharedPreference.GetLoginStatus = "true";
+				SharedPreference.UserMobileNumber = strMobileNumber;
+				await Navigation.PopModalAsync();
 
 
 			}

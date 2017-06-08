@@ -53,10 +53,13 @@ namespace InheritXDemo
 			var mDatabaseModel = database.Table<DatabaseModel>().Where(i => i.personMobileNumber == strMobileNumber)
 										 .FirstOrDefaultAsync().Result;
 
-			if (mDatabaseModel.personMobileNumber.Equals(strMobileNumber) && mDatabaseModel.personPassword.ToLower()
-				.Equals(strPassword.ToLower()))
+			if (mDatabaseModel!= null)
 			{
-				isAuthenticated = true;
+				if (mDatabaseModel.personMobileNumber.Equals(strMobileNumber) && mDatabaseModel.personPassword.ToLower()
+					.Equals(strPassword.ToLower()))
+				{
+					isAuthenticated = true;
+				}
 			}
 
 			return isAuthenticated;
