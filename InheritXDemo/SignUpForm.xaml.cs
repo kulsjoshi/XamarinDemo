@@ -42,7 +42,12 @@ namespace InheritXDemo
 		{
 			if (intResult == 1){
 				await DisplayAlert(Constant.APP_NAME , Constant.SIGNUP_SUCCESS , null,Constant.OK);
-				App.Instance.ClearNavigationAndGoToPage(new HomeForm());
+				SharedPreference.GetLoginStatus = "true";
+				SharedPreference.GetEmailAddress = strEmail;
+				SharedPreference.GetUsername = strName;
+				SharedPreference.GetMobileNumber = strMobileNumber;
+
+				App.Instance.ClearNavigationAndGoToPage(new NavigationDrawerDetailForm());
 
 			}
 			else{
@@ -88,7 +93,7 @@ namespace InheritXDemo
 				DisplayAlert(Constant.APP_NAME, Constant.ENTER_VALID_PASSWORD, Constant.OK);
 				return false;
 			}
-			else if (strPassword.ToLower().Equals(strConfirmPassword.ToLower()))
+			else if (!strPassword.ToLower().Equals(strConfirmPassword.ToLower()))
 			{
 				DisplayAlert(Constant.APP_NAME, Constant.PASSWORD_NOT_MATCH, Constant.OK);
 				return false;

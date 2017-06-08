@@ -9,6 +9,7 @@ namespace InheritXDemo
 	{
 
 		String strLoginStatus;
+		String strUserName;
 
 		public NavigationDrawerDetailForm()
 		{
@@ -16,12 +17,20 @@ namespace InheritXDemo
 
 			strLoginStatus = SharedPreference.GetLoginStatus;
 
+
+
+
 			if (strLoginStatus.ToLower().Equals("false"))
 			{
 				Navigation.PushModalAsync(new LoginForm());
 			}
 			else
 			{
+				DatabaseModel mDatabaseModel = App.Database.getUserData(SharedPreference.GetMobileNumber).Result;
+				strUserName = mDatabaseModel.personName;
+
+				lableUserName.Text = "Welcome, " + strUserName;
+
 				changeNavigationPage(new HomeForm());
 			}
 		}
@@ -45,9 +54,19 @@ namespace InheritXDemo
 			changeNavigationPage(new AboutUsForm());
 		}
 
-		void openLogout(object sender, System.EventArgs e)
+		async void openLogout(object sender, System.EventArgs e)
 		{
 			changeNavigationPage(new LoginForm());
+
+			var result = await DisplayAlert(Constant.APP_NAME ,Constant.LOGOUT_MESSAGE,Constant.NO,Constant.YES);
+
+			if (result == true)
+			{
+				SharedPreference.GetLoginStatus = "false";
+				await Navigation.PopAsync();
+			}
+
+
 		}
 
 		private void changeNavigationPage(ContentPage contentPage)

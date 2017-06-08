@@ -15,6 +15,13 @@ namespace InheritXDemo
 		public static String LOGIN_FAILURE = "Your phone number or password is incorrect";
 		public static String SIGNUP_USER_EXIST = "This mobile number is already exists";
 
+		public static String LOGOUT_MESSAGE = "Are you sure you want to logout";
+
+
+		public static String NO = "NO";
+		public static String YES = "YES";
+
+
 
 		//Validation messages
 		public static String ENTER_EMAIL = "Please enter e-mail address";

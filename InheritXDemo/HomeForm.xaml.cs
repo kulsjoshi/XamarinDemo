@@ -7,31 +7,26 @@ namespace InheritXDemo
 {
 	public partial class HomeForm : ContentPage
 	{
+
+		private String strMobileNumber;
+		private String strUserName;
+
 		public HomeForm()
 		{
 			InitializeComponent();
 
 			String isLoggedIn = SharedPreference.GetLoginStatus;
 
-			showDisplayAlert(isLoggedIn);
+			strMobileNumber = SharedPreference.GetMobileNumber;
 
-			if (isLoggedIn.Equals("true"))
+
+			if (isLoggedIn.Equals("false"))
 			{
 				startLoginScreen();
 			}
 
 
-			//var toolbar = new ToolbarItem
-			//{
-			//	Text = "Side"
 
-			//};
-
-			//toolbar.Clicked += async (sender, e) =>
-			//		{
-			//			await DisplayAlert("Inx Demo", "Under constraction..", "Ok");
-			//		};
-			//ToolbarItems.Add(toolbar);
 		}
 
 		async private void startLoginScreen()

@@ -30,7 +30,7 @@ namespace InheritXDemo
 			// Handle when your app resumes
 		}
 
-		public void ClearNavigationAndGoToPage(ContentPage page)
+		public void ClearNavigationAndGoToPage(MasterDetailPage page)
 		{
 			MainPage = new NavigationPage(page);
 
@@ -47,6 +47,11 @@ namespace InheritXDemo
 				return mPersonDatabase;
 
 			}
+		}
+
+		public void GoToLoginScreen(ContentPage contentPage)
+		{
+			MainPage = new NavigationPage(new LoginForm());
 		}
 	}
 }

@@ -8,15 +8,14 @@ namespace InheritXDemo
 	public partial class ChangePasswordForm : ContentPage
 	{
 
-		String strMobileNumber, strLoginStatus;
+		String strMobileNumber;
 		String strOldPassword, strNewPassword, strNewConfirmPassword;
 
 		public ChangePasswordForm()
 		{
 			InitializeComponent();
 
-			strMobileNumber = SharedPreference.UserMobileNumber;
-			strLoginStatus = SharedPreference.GetLoginStatus;
+			strMobileNumber = SharedPreference.GetMobileNumber;
 
 			lableMobileNumber.Text = "You're logged in with " + strMobileNumber;
 
@@ -29,10 +28,27 @@ namespace InheritXDemo
 			strNewPassword = entryNewPassword.Text;
 			strNewConfirmPassword = entryNewConfirmPassword.Text;
 
-			if(isDataValidate()){
+			if (isDataValidate())
+			{
 
+				if (App.Database.isUserExists(strMobileNumber))
+				{
+					Boolean isUpdated = App.Database.updatePassword(strMobileNumber, strNewPassword);
 
-			
+					if (isUpdated)
+					{
+						DisplayAlert(Constant.APP_NAME, "Password changed successfully", Constant.OK);
+						entryOldPassword.Text = "";
+						entryNewPassword.Text = "";
+						entryNewConfirmPassword.Text = "";
+					}
+					else
+					{
+						DisplayAlert(Constant.APP_NAME, "Password is NOT changed", Constant.OK);
+					}
+
+				}
+
 			}
 
 		}
@@ -41,12 +57,12 @@ namespace InheritXDemo
 		{
 			if (strOldPassword.Length == 0)
 			{
-                DisplayAlert(Constant.APP_NAME, Constant.ENTER_PASSWORD, Constant.OK);
+				DisplayAlert(Constant.APP_NAME, Constant.ENTER_PASSWORD, Constant.OK);
 				return false;
 			}
 			else if (strNewPassword.Length == 0)
 			{
-                DisplayAlert(Constant.APP_NAME, Constant.ENTER_PASSWORD, Constant.OK);
+				DisplayAlert(Constant.APP_NAME, Constant.ENTER_PASSWORD, Constant.OK);
 				return false;
 			}
 			else if (strNewConfirmPassword.Length == 0)
@@ -54,7 +70,7 @@ namespace InheritXDemo
 				DisplayAlert(Constant.APP_NAME, Constant.ENTER_CONFIRM_PASSWORD, Constant.OK);
 				return false;
 			}
-			else if (strOldPassword.Length< 6 || strNewConfirmPassword.Length< 6 || strNewPassword.Length< 6)
+			else if (strOldPassword.Length < 6 || strNewConfirmPassword.Length < 6 || strNewPassword.Length < 6)
 			{
 				DisplayAlert(Constant.APP_NAME, Constant.ENTER_VALID_PASSWORD, Constant.OK);
 				return false;

@@ -60,7 +60,7 @@ namespace InheritXDemo
 			{
 				await DisplayAlert(Constant.APP_NAME, Constant.LOGIN_SUCCESS, null, "OK");
 				SharedPreference.GetLoginStatus = "true";
-				SharedPreference.UserMobileNumber = strMobileNumber;
+				SharedPreference.GetMobileNumber = strMobileNumber;
 				await Navigation.PopModalAsync();
 
 

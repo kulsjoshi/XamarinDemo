@@ -53,7 +53,7 @@ namespace InheritXDemo
 			var mDatabaseModel = database.Table<DatabaseModel>().Where(i => i.personMobileNumber == strMobileNumber)
 										 .FirstOrDefaultAsync().Result;
 
-			if (mDatabaseModel!= null)
+			if (mDatabaseModel != null)
 			{
 				if (mDatabaseModel.personMobileNumber.Equals(strMobileNumber) && mDatabaseModel.personPassword.ToLower()
 					.Equals(strPassword.ToLower()))
@@ -86,5 +86,39 @@ namespace InheritXDemo
 			return isExists;
 		}
 
+		public Boolean updatePassword(string strMobileNumber, string strPassword)
+		{
+			var mData = database.Table<DatabaseModel>().Where(i => i.personMobileNumber.Equals(strMobileNumber))
+											.FirstOrDefaultAsync().Result;
+
+			if (mData != null)
+			{
+
+				DatabaseModel mDatabaseModel = new DatabaseModel();
+				mDatabaseModel.id = mData.id;
+				mDatabaseModel.personEmail = mData.personEmail;
+				mDatabaseModel.personPassword = strPassword;
+				mDatabaseModel.personMobileNumber = mData.personMobileNumber;
+
+				database.UpdateAsync(mDatabaseModel);
+
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+
+		}
+
+		public Task<DatabaseModel> getUserData(String strMobileNumber)
+		{
+			return database.Table<DatabaseModel>().Where(i => i.personMobileNumber.Equals(strMobileNumber))
+														.FirstOrDefaultAsync();
+		}
+
+
 	}
 }
+

@@ -4,12 +4,12 @@
 	<MasterDetailPage.Master>
 		<ContentPage Title="Navigation Drawer" >
 			<ContentPage.Content>
-				<StackLayout Orientation="Vertical" >
-					<Image Source="logo.png" />
-					<Button Text="Home" Clicked="openHome" HorizontalOptions="CenterAndExpand"/>
-					<Button Text="Change Password" Clicked="openChangePassword" HorizontalOptions="CenterAndExpand"/>
-					<Button Text="About us" Clicked="openAboutUs" HorizontalOptions="CenterAndExpand"/>
-					<Button Text="Logout" Clicked="openLogout" HorizontalOptions="CenterAndExpand"/>
+				<StackLayout Orientation="Vertical" Padding="10">
+					<Label Text="" x:Name="lableUserName"  FontSize="15" />
+					<Button Text="Home" Margin="10,10,10,10" Clicked="openHome" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="Change Password" Margin="10,10,10,10"  Clicked="openChangePassword" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="About us" Margin="10,10,10,10"  Clicked="openAboutUs" HorizontalOptions="CenterAndExpand"/>
+					<Button Text="Logout"  Margin="10,10,10,10" Clicked="openLogout" HorizontalOptions="CenterAndExpand"/>
 				</StackLayout>
 			</ContentPage.Content>
 		</ContentPage>
